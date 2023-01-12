@@ -42,7 +42,7 @@
 10. ``Import`` source 경로를 확인하고, ``Finish`` 버튼을 클릭합니다.
 
 
-_[import][깃허브 임포트]를 참고하세요._
+https://smart-life-studio.tistory.com/170
 
 ## 프로젝트 푸쉬 하기
 
@@ -78,4 +78,3 @@ _[import][깃허브 임포트]를 참고하세요._
 <!-- Markdown link & img dfn's -->
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[import]: https://smart-life-studio.tistory.com/170
