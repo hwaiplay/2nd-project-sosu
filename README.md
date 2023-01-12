@@ -3,18 +3,20 @@
 
 모임 중개 웹 플랫폼
 
-![](../header.png)
+![](../total-branch.png)
 
 ## 내 레포지토리에 저장하기
 
 1.
 
-```우측 상단 fork 클릭
+```
+우측 상단 fork 클릭
 ```
 
 2.
 
-```자신의 레포지토리에 저장
+```
+자신의 레포지토리에 저장
 ```
 
 ## 프로젝트 임포트 하기
@@ -48,27 +50,24 @@ _[import][깃허브 임포트]를 참고하세요._
 
 ## 업데이트 내역
 
-* 0.2.1
-    * 수정: 문서 업데이트 (모듈 코드 동일)
-* 0.2.0
-    * 수정: `setDefaultXYZ()` 메서드 제거
-    * 추가: `init()` 메서드 추가
-* 0.1.1
-    * 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
-* 0.1.0
-    * 첫 출시
-    * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
-* 0.0.1
-    * 작업 진행 중
+* 
+    * 
+* 
+    * 
+    * 
+*
+    * 
+* 
+    * 
+    * 
+*
+    * 
 
-## 정보
-
-이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
+## 
 
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
 
-## 기여 방법
+## 
 
 1. 
 2. 
@@ -77,4 +76,6 @@ _[import][깃허브 임포트]를 참고하세요._
 5. 
 
 <!-- Markdown link & img dfn's -->
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [import]: [https://github.com/yourname/yourproject/wiki](https://smart-life-studio.tistory.com/170)
