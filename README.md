@@ -78,4 +78,4 @@ _[import][깃허브 임포트]를 참고하세요._
 <!-- Markdown link & img dfn's -->
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[import]: [https://github.com/yourname/yourproject/wiki](https://smart-life-studio.tistory.com/170)
+[import]: https://smart-life-studio.tistory.com/170
