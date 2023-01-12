@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+	
+	<!-- 마이 페이지에서 리뷰 보여주기 -->	
+	<select id="selectMyReview" resultType="hashmap" parameterType="hashmap">
+		
+		SELECT 
+				*
+		FROM 
+				REVIEW R 
+		JOIN 
+				MOIM M ON R.RV_MO_IDX = M.MO_IDX
+		JOIN 
+				FILE_T F ON R.RV_IDX = F.F_ARTICLE
+		WHERE 
+				F_TABLE = 'F'
+		AND
+				R.RV_M_IDX = #{rv_m_idx} 
+		AND
+				F_MAIN_YN = 'N'
+		AND
+				F_DEL_YN = 'N'
+		AND
+				RV_DEL_YN = 'N'
+		AND
+				R.RV_IDX = #{rv_idx}
+		
+	</select>
+	
+	<!-- 모임리스트에서 리뷰 보여주기 -->	
+	<select id="selectMoimListReview" resultType="hashmap" parameterType="hashmap">
+		
+		SELECT 
+				*
+		FROM 
+				REVIEW R 
+		JOIN 
+				MOIM M ON R.RV_MO_IDX = M.MO_IDX 
+		JOIN 
+				FILE_T F ON R.RV_IDX = F.F_ARTICLE 
+		WHERE 
+				F_TABLE = 'F' 
+		AND
+				F_MAIN_YN = 'N' 
+		AND
+				F_DEL_YN = 'N' 
+		AND
+				RV_DEL_YN = 'N' 
+		AND
+				M.MO_CATEGORY = #{mo_category}
+		<if test="mo_region != '전체'">
+		AND
+				M.MO_REGION = #{mo_region}		
+		</if>;
+		
+	</select>
+	
+	<!-- 후기 전체보기에서 리뷰 보여주기 -->
+	<select id="selectAllReview" resultType="hashmap" parameterType="hashmap">
+		<include refid="common.pagingPre"/> 
+			SELECT
+					ROW_NUMBER() OVER(ORDER BY RV_IDX DESC) RNUM,
+		            R.RV_IDX,
+					R.RV_M_IDX,
+					R.RV_MO_IDX,
+					R.RV_CONTENT,
+					R.RV_REGDATE,
+					R.RV_TITLE,
+					R.RV_DEL_YN,
+					R.RV_STAR,
+					F.F_IDX,
+					F.F_TABLE,
+					F.F_ARTICLE,
+					F.F_OGNAME,
+					F.F_SVNAME,
+					F.F_SIZE,
+					F.F_MAIN_YN,
+					F.F_DEL_YN,
+					F.F_REG_DATE,
+					M.MO_IDX,
+					M.M_IDX,
+					M.MO_TITLE,
+					M.MO_DETAIL,
+					M.MO_CATEGORY,
+					M.MO_DETAILCATEGORY,
+					M.MO_REGION,
+					M.MO_DETAILREGION,
+					M.MO_PERMIT,
+					M.MO_GENDER,
+					M.MO_MINAGE,
+					M.MO_MAXAGE,
+					M.MO_MAXPEOPLE,
+					M.MO_COST,
+					M.MO_DEADLINE,
+					M.MO_DEADTIME,
+					M.MO_REGDATE,
+					M.MO_CLOSE_YN,
+					M.MO_DEL_YN
+			FROM
+					REVIEW R
+			JOIN 
+					MOIM M ON R.RV_MO_IDX = M.MO_IDX 
+			JOIN 
+					FILE_T F ON R.RV_IDX = F.F_ARTICLE
+			WHERE 
+					F_TABLE = 'F' 
+			AND
+					F_MAIN_YN = 'N' 
+			AND
+					F_DEL_YN = 'N' 
+			AND
+					RV_DEL_YN = 'N' 
+			AND
+					M.MO_CATEGORY = #{mo_category}
+			<if test="mo_region != '전체'">
+			AND
+				M.MO_REGION = #{mo_region}		
+			</if>		
+		    ORDER BY 
+		    		F.F_REG_DATE DESC
+		
+		<include refid="common.pagingPost" />
+	</select>
+	
+	<!-- 리뷰작성하기 -->
+	<insert id="insertReview" parameterType="hashmap">
+	
+		INSERT INTO 
+				REVIEW
+						*
+				VALUES
+				(
+					RV_IDX.NEXTVAL,
+					#{rv_m_idx}, 
+					#{rv_mo_idx},
+					#{rv_content},
+					sysdate,
+					#{rv_title},
+					'N',
+					#{rv_star}
+								)
+	
+	</insert>
+	
+	<!-- 리뷰 사진 파일 등록 -->
+	<insert id="insertPhotoReview" parameterType="hashmap">
+	
+		INSERT ALL INTO 
+				FILE_T
+						*
+				VALUES
+				(
+					F_IDX.NEXTVAL, 
+					'F', 
+					#{rv_idx}, 
+					#{f_ogname}, 
+					#{f_svname}, 
+					#{f_size}, 
+					'N', 
+					'N', 
+					sysdate
+							)
+	
+	</insert>
+	
+	<!-- 리뷰수정하기 -->
+	<update id="updateReview" parameterType="hashmap">
+	
+        UPDATE 
+        		REVIEW
+		SET 
+				RV_STAR = #{rv_star},
+				RV_TITLE = #{rv_title},
+				RV_CONTENT = #{rv_contents},
+				RV_REGDATE = sysdate
+		WHERE 
+				RV_IDX = #{rv_idx}
+		AND 
+				RV_M_IDX = #{rv_m_idx}
+		AND		
+				RV_MO_IDX = #{rv_mo_idx}
+    
+	</update>
+	
+	<!-- 리뷰삭제하기 -->
+	<update id="deleteReview" parameterType="hashmap">
+	
+    	UPDATE 
+    			REVIEW
+		SET 
+				RV_DEL_YN = 'Y',
+				RV_REGDATE = sysdate
+		WHERE 
+				RV_IDX = #{rv_idx}
+		AND 
+				RV_M_IDX = #{rv_m_idx}
+		AND		
+				RV_MO_IDX = #{rv_mo_idx}
+    
+	</update>
+
+</mapper>

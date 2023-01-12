@@ -1,0 +1,15 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<!-- 고객센터 네비게이션 -->
+<nav class="cs">
+	<div class="nav_wrap slim_scroll">
+		<h2><a href="/cs">고객센터</a></h2>
+		<ul class="user_info">
+			<li><a href="/cs/noticeList">공지사항 게시판</a></li>
+			<li><a href="/cs/faqList">자주묻는 질문</a></li>
+			<c:if test="${!empty m_id}">
+				<li><a href="/cs/qnaList">1:1 질문</a></li>
+			</c:if>
+		</ul>
+	</div>
+</nav>

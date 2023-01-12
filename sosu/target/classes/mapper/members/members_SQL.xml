@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="members">
+	
+	<!--  -->	
+	<select id="i" resultType="hashmap" parameterType="hashmap">
+		
+		SELECT 
+				
+		FROM 
+				
+		WHERE 
+						
+	</select>
+	
+	<!--  -->
+	<insert id="j" parameterType="hashmap">
+	
+		INSERT INTO 
+				
+				VALUES
+				(
+						)
+	</insert>
+	
+	<!--  -->
+	<update id="k" parameterType="hashmap">
+	
+        UPDATE 
+        		
+		SET 
+				
+		WHERE 
+				    
+	</update>
+	
+	<!--  -->
+	<delete id="l" parameterType="hashmap">
+	
+    	DELETE FROM  
+        		
+        WHERE 
+       
+	</delete>
+
+</mapper>

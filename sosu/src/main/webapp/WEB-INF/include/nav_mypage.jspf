@@ -1,0 +1,24 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<!-- 마이페이지 네비게이션 -->
+<nav class="mypage">
+	<div class="nav_wrap slim_scroll">
+		<h2><a href="/user/mypage/info/userInfo">마이페이지</a></h2>
+		<ul class="user_info">
+			<h3><a href="/user/mypage/info/userInfo">나의 정보</a></h3>
+			<li><a href="/user/mypage/info/userInfo">나의 정보 관리</a></li>
+			<li><a href="/user/mypage/reserv/reservList">예약 관리</a></li>
+			<li><a href="/user/mypage/review/reviewList">리뷰 관리</a></li><!-- 수정필요-->
+			<li><a href="/user/mypage/zzim/list">찜 리스트</a></li><!-- 수정필요-->
+		</ul>
+		<c:if test="${m_type == 1}"><!-- 사업자 회원 메뉴 -->
+			<ul class="cafe_info">
+				<h3><a href="/owner/openCafeList">사장님 전용 메뉴</a></h3>
+				<li><a href="/owner/openCafeList">업체 정보</a></li>
+				<li><a href="/owner/mypage/adjustment">정산 정보</a></li>
+				<li><a href="/owner/openGoodsList">상품 관리</a></li>
+				<li><a href="/owner/mypage/cafe_reserv/cafeReservList">업체 예약 관리</a></li>
+			</ul>
+		</c:if>
+	</div>
+</nav>

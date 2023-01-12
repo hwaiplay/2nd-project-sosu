@@ -1,0 +1,32 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/include/common-head.jspf" %>
+
+<body id="admin_body">
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/resources/css/layout_admin.css"/>
+<script src="/resources/js/reset_sche.js"></script>
+
+<header class="bgColor">
+	<div class="logo_wrap">
+		<a href="/admin/userList">
+			<img class="logo" alt="Honey Dream Logo" src="/resources/image/logo_w.png">
+			Admin
+		</a>
+	</div>
+	<ul class="sub_pages">
+		<li><a href="/admin/userList"><i class="fa-solid fa-user-group"></i> 고객정보 관리</a></li>
+		<li><a href="/admin/noticeList"><i class="fa-solid fa-triangle-exclamation"></i> 공지사항 관리</a></li>
+		<li><a href="/admin/qnaList"><i class="fa-solid fa-headset"></i> 1:1 문의 관리</a></li>
+		<li><a href="/admin/faqList"><i class="fa-solid fa-circle-question"></i> 자주묻는 질문 관리</a></li>
+		<li><a href="/admin/reviewList"><i class="fa-solid fa-star"></i>리뷰관리</a>
+	</ul>
+	<div class="btn_wrap flex flexWrap flexBetween">
+		<a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>로그아웃</a>
+		<div class="arrow_wrap">
+			<button type="button" class="toggle_header" onclick="click_toggle_on('body')"><i class="fa-regular fa-circle-left"></i>메뉴 닫기</button>
+			<button type="button" onclick="go_top()"><i class="fa-regular fa-circle-up"></i>맨 위로가기</button>
+		</div>
+	</div>
+	<form id="common" method="post"></form>
+</header>
+<button class="sche_reset btn warn" onclick="sche_reset()">스케쥴 리셋</button>

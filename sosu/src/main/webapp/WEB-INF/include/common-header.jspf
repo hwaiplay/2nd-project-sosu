@@ -1,0 +1,75 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/include/common-head.jspf" %>
+
+<body onscroll="scroll_toggle_on('header')">
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="/resources/css/layout.css"/>
+<!-- js -->
+<script src="/resources/js/search_cafe.js"></script>
+
+<header>
+	<div class="header_wrap slim_scroll layoutCenter flexBetween">
+		<div class="logo_wrap">
+			<a href="/main">
+				<img class="logo" alt="Honey Dream Logo" src="/resources/image/logo.png">
+				<img class="logo_w" alt="Honey Dream Logo" src="/resources/image/logo_w.png">
+			</a>
+		</div>
+		<form id="search" class="flexCenter flexWrap" name="search" method="post" action="/main">
+			<ul class="types flexBetween">
+				<li><input type="radio" class="fa search" name="search_type" value="search" ${(empty search_type || search_type == 'search')?'checked':''}></li>
+				<li><input type="radio" class="fa gps" name="search_type" value="gps" ${(search_type == 'gps')?'checked':''}></li>
+				<li><input type="radio" class="fa subway" name="search_type" value="subway" ${(search_type == 'subway')?'checked':''}></li>
+			</ul>
+			<c:if test="${empty search_type || search_type == 'search'}">
+				<div class="keyword_wrap">
+					<input type="text" name="search_keyword" placeholder="주소 또는 업체명을 검색해 주세요" autocomplete="off" value="${empty search_keyword?'':search_keyword}">
+					<input class="btn" type="submit" value="검색" form="search">
+					<ul class="recent_keyword">
+						<li><strong>최근 검색 내용</strong></li>
+						<c:forEach var="i" begin="0" end="4">
+							<li><input type="button" onclick="recent_search()" value="최근 검색어"></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
+			<c:if test="${search_type == 'gps'}">
+				<div class="keyword_wrap">${search_keyword}<input type="hidden" name="search_keyword" value="${empty search_keyword?'':search_keyword}"></div>
+			</c:if>
+			<c:if test="${search_type == 'subway'}">
+				<div class="keyword_wrap">
+					<button type="button" onclick="show_subway_lines(this)">
+						<ul class="select_title flex">
+							<li class="loc">지역</li>
+							<li class="line">호선</li>
+							<li class="search_keyword">지하철역</li>
+						</ul>
+					</button>
+					<div class="select_list">
+						<ul class="loc slim_scroll"></ul>
+						<ul class="line slim_scroll"></ul>
+						<ul class="search_keyword slim_scroll"></ul>
+					</div>
+					<input type="hidden" name="search_keyword" value="${empty search_keyword?'':search_keyword}">
+				</div>
+			</c:if>
+		</form>
+		<ul class="sub_pages flexCenter">
+			<c:if test="${empty m_id}">
+				<li class="login"><a href="/login">로그인</a></li>
+			</c:if>
+			<c:if test="${!empty m_id}">
+				<li class="logout"><a href="/logout">로그아웃</a></li>
+				<li class="mypage"><a href="/user/mypage/info/userInfo">마이페이지</a></li>
+			</c:if>
+			<li class="cs"><a href="/cs">고객센터</a></li>
+		</ul>
+		<button class="menu_btn" type="button" onclick="click_toggle_show('header')">
+			<svg viewBox="0 0 24 24">
+				<line class="bar1" x1="3" y1="6" x2="21" y2="6"/>
+				<line class="bar2" x1="3" y1="12" x2="21" y2="12"/>
+				<line class="bar3" x1="3" y1="18" x2="21" y2="18"/>
+			</svg>
+		</button>
+	</div>
+</header>
