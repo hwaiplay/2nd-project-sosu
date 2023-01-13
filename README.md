@@ -33,7 +33,7 @@
 
 8. ``clone``이 되면, ``Git Repositories`` 탭에 ``github``의 원격 저장소가 정상적으로 연동됩니다.
 
-9. ``Git Repositories`` 탭에서 내려받을 프로젝트를 선택하고 우클릭 ▶ ``Import Projects`` 메뉴를 선택합니다.
+9. ``Git Repositories`` 탭에서 내려받을 프로젝트를 선택하고 우클릭 ▶ ``Import Maven Projects`` 메뉴를 선택합니다.
 
 10. ``Import source`` 경로를 확인하고, ``Finish`` 버튼을 클릭합니다.
 
