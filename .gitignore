@@ -119,4 +119,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# 쓸데없는 폴더 제외
+javaSJ/
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
